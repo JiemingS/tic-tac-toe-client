@@ -32,15 +32,40 @@ const onSignInSuccess = function (responseData) {
   store.user = responseData.user
   console.log('store is', store)
   $('#gameboard-section').show()
+  $('#signOutChangepwd').show()
+  $('#signUpIn').hide()
 }
 
 const onSignInFailure = function () {
   failureMessage('Sign in failed')
 }
 
+const onChangePasswordSuccess = function () {
+  successMessage('Changed password successfully!')
+}
+
+const onChangePasswordFailure = function () {
+  failureMessage('Change password failed')
+}
+
+const onSignOutSuccess = function () {
+  successMessage('Signed out successfully!')
+  $('#gameboard-section').hide()
+  $('#signOutChangepwd').hide()
+  $('#signUpIn').show()
+}
+
+const onSignOutFailure = function () {
+  failureMessage('Sign out failed')
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
   onSignInSuccess,
-  onSignInFailure
+  onSignInFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure,
+  onSignOutSuccess,
+  onSignOutFailure
 }

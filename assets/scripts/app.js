@@ -10,6 +10,8 @@ $(() => {
   // --------------------------------------------------------------------------
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
+  $('#change-password').on('submit', events.onChangePassword)
+  $('#sign-out').on('submit', events.onSignOut)
   // --------------------------------------------------------------------------
   const emptyJsBoard = ['', '', '', '', '', '', '', '', '']
   // --------------------------------------------------------------------------
@@ -64,6 +66,7 @@ $(() => {
 
   const gameStart = function () {
     $('#gameboard-section').hide()
+    $('#signOutChangepwd').hide()
     $('#block1').on('click', function (event) {
       if ($('#block1').text() === '') {
         if (step % 2 === 0) {

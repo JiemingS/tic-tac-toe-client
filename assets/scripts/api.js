@@ -3,7 +3,7 @@
 const config = require('./config')
 // require `store` so we have access to our `token`
 // so the API knows who we are
-// const store = require('../store')
+const store = require('./store')
 
 const signUp = function (formData) {
   return $.ajax({
@@ -21,7 +21,30 @@ const signIn = function (formData) {
   })
 }
 
+const changePassword = function (formData) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/change-password',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
+  })
+}
+
+const signOut = function () {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/sign-out',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  changePassword,
+  signOut
 }
