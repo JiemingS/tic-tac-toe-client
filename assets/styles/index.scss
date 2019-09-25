@@ -1,1 +1,48 @@
 @import '~bootstrap/scss/bootstrap';
+
+$alt-color: $cyan;
+$body-bg-color: $gray-200;
+$font-color: $light;
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+
+  height: 600px;
+  border: 1px solid black;
+}
+
+.wholerow {
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.success {
+  color: #008000;
+}
+
+.failure {
+  color: #ff0000;
+}

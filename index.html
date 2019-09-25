@@ -12,6 +12,45 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h2 id="message"></h2>
+      <h2>Sign-up</h2>
+      <form id='sign-up'>
+        <input type="email" name="credentials[email]" placeholder='Enter email...' >
+        <input type="password" name="credentials[password]" placeholder='Enter password'>
+        <input type="password" name="credentials[password_confirmation]" placeholder='Enter password again'>
+        <button>Sign Up</button>
+      </form>
+      <h2>Sign-in</h2>
+      <form id='sign-in'>
+        <input type="email" name="credentials[email]" placeholder='Enter email...' >
+        <input type="password" name="credentials[password]" placeholder='Enter password'>
+        <button>Sign In</button>
+      </form>
+
+      <!-- <h1>Browser Template</h1> -->
+      <section id="gameboard-section">
+        <h1 id="main-message">GAME START ! Play1 'X' First</h1>
+        <div class="col-7 container">
+          <button type="submit" name="button" id="new-game">New Game</button>
+          <div class="wholerow">
+            <div class="row">
+              <div class="box" id="block1"></div>
+              <div class="box" id="block2"></div>
+              <div class="box" id="block3"></div>
+            </div>
+            <div class="row">
+              <div class="box" id="block4"></div>
+              <div class="box" id="block5"></div>
+              <div class="box" id="block6"></div>
+            </div>
+            <div class="row">
+              <div class="box" id="block7"></div>
+              <div class="box" id="block8"></div>
+              <div class="box" id="block9"></div>
+            </div>
+            <button type="button" name="button" class="test">test</button>
+          </div>
+        </div>
+      </section>
     </body>
 </html>
