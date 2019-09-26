@@ -16,15 +16,15 @@
       <section id="signUpIn">
         <h2>Sign-up</h2>
         <form id='sign-up'>
-          <input type="email" name="credentials[email]" placeholder='Enter email...' >
-          <input type="password" name="credentials[password]" placeholder='Enter password'>
-          <input type="password" name="credentials[password_confirmation]" placeholder='Enter password again'>
+          <input type="email" name="credentials[email]" placeholder='Enter email...' required>
+          <input type="password" name="credentials[password]" placeholder='Enter password' required>
+          <input type="password" name="credentials[password_confirmation]" placeholder='Enter password again' required>
           <button>Sign Up</button>
         </form>
         <h2>Sign-in</h2>
         <form id='sign-in'>
-          <input type="email" name="credentials[email]" placeholder='Enter email...' >
-          <input type="password" name="credentials[password]" placeholder='Enter password'>
+          <input type="email" name="credentials[email]" placeholder='Enter email...' required>
+          <input type="password" name="credentials[password]" placeholder='Enter password' required>
           <button>Sign In</button>
         </form>
       </section>
@@ -32,8 +32,8 @@
       <section id="signOutChangepwd">
         <h2>Change Password</h2>
         <form id='change-password'>
-          <input type="password" name="passwords[old]" placeholder='Enter old password'>
-          <input type="password" name="passwords[new]" placeholder='Enter new password'>
+          <input type="password" name="passwords[old]" placeholder='Enter old password' required>
+          <input type="password" name="passwords[new]" placeholder='Enter new password' required>
           <button>Change Password</button>
         </form>
         <h2>Sign-out</h2>
@@ -63,7 +63,6 @@
               <div class="box" id="block8"></div>
               <div class="box" id="block9"></div>
             </div>
-            <button type="button" name="button" class="test">test</button>
           </div>
         </div>
       </section>

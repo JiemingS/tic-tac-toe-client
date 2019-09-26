@@ -3,6 +3,8 @@
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 const events = require('./events')
+const store = require('./store')
+// const api = require('./api')
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
@@ -12,20 +14,36 @@ $(() => {
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('submit', events.onSignOut)
+  // $('#new-game').on('click', events.onCreateGame)
+  $('#new-game').click(function () {
+    clean()
+    step = 0
+    events.onCreateGame()
+    addClickFunction()
+  })
   // --------------------------------------------------------------------------
   const emptyJsBoard = ['', '', '', '', '', '', '', '', '']
+  let step = 0
   // --------------------------------------------------------------------------
   // to fill the blank with X or O
 
   const clean = function () {
+    console.log('My JsBoard Array before clean ' + emptyJsBoard)
+    // for (let i = 0; i < 9; i++) {
+    //   api.update(i, emptyJsBoard[i])
+    // }
     for (let i = 0; i < 9; i++) {
       $('#block' + (i + 1)).off('click')
       emptyJsBoard[i] = ''
+      $('#block' + (i + 1)).text('')
     }
     step = -1
   }
+
   const checkWin = function () {
+    console.log(store)
     for (let rank = 0; rank < 9; rank++) {
+      // api.update(rank, emptyJsBoard[rank])
       if (rank === 0) {
         if (emptyJsBoard[0] !== '' && emptyJsBoard[0] === emptyJsBoard[4] && emptyJsBoard[4] === emptyJsBoard[8]) {
           $('#main-message').text('Player ' + emptyJsBoard[0] + ' Win')
@@ -62,23 +80,26 @@ $(() => {
     }
   }
 
-  let step = 0
-
-  const gameStart = function () {
-    $('#gameboard-section').hide()
-    $('#signOutChangepwd').hide()
+  const addClickFunction = function () {
+    $('#main-message').text('GAME START ! Play1 "X" First')
     $('#block1').on('click', function (event) {
       if ($('#block1').text() === '') {
         if (step % 2 === 0) {
           $('#block1').text('X')
           emptyJsBoard[0] = 'X'
+          // api update
+          // events.onUpdate(1, 'X')
+          // console.log(store)
+          // api
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block1').text('O')
           emptyJsBoard[0] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -90,12 +111,14 @@ $(() => {
           $('#block2').text('X')
           emptyJsBoard[1] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block2').text('O')
           emptyJsBoard[1] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -107,12 +130,14 @@ $(() => {
           $('#block3').text('X')
           emptyJsBoard[2] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block3').text('O')
           emptyJsBoard[2] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -124,12 +149,14 @@ $(() => {
           $('#block4').text('X')
           emptyJsBoard[3] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block4').text('O')
           emptyJsBoard[3] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -141,12 +168,14 @@ $(() => {
           $('#block5').text('X')
           emptyJsBoard[4] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block5').text('O')
           emptyJsBoard[4] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -158,12 +187,14 @@ $(() => {
           $('#block6').text('X')
           emptyJsBoard[5] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block6').text('O')
           emptyJsBoard[5] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -175,12 +206,14 @@ $(() => {
           $('#block7').text('X')
           emptyJsBoard[6] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block7').text('O')
           emptyJsBoard[6] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -192,12 +225,14 @@ $(() => {
           $('#block8').text('X')
           emptyJsBoard[7] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block8').text('O')
           emptyJsBoard[7] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -209,12 +244,14 @@ $(() => {
           $('#block9').text('X')
           emptyJsBoard[8] = 'X'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player2')
           checkWin()
           step++
         } else {
           $('#block9').text('O')
           emptyJsBoard[8] = 'O'
           console.log(emptyJsBoard + ' ' + step)
+          $('#main-message').text('Player1')
           checkWin()
           step++
         }
@@ -222,11 +259,18 @@ $(() => {
     })
   }
 
+  const gameStart = function () {
+    $('#gameboard-section').hide()
+    $('#signOutChangepwd').hide()
+    addClickFunction()
+  }
+
   gameStart()
   // --------------------------------------------------------------------------
 
   module.exports = {
     emptyJsBoard,
-    step
+    step,
+    addClickFunction
   }
 })
