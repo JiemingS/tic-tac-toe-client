@@ -6,10 +6,11 @@ const ui = require('./ui')
 const store = require('./store')
 // const app = require('./app')
 
-const onUpdate = function (num, string) {
-  api.update(num, string)
-    .then()
-    .catch()
+const onUpdate = function (Index, Value, Over) {
+  // console.log('Index in events.index ', Index)
+  api.updateGame(Index, Value, Over)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onUpdateFailure)
 }
 
 const onSignUp = function (event) {

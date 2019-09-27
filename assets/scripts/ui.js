@@ -66,11 +66,23 @@ const onCreateGameSuccess = function (responseData) {
   console.log('responseData is ' + responseData)
   store.game = responseData.game
   // IIDD = store.game.id
-  console.log('store is', store)
+  console.log('store is', store.game)
 }
 
 const onCreateGameFailure = function () {
   failureMessage('Create Game failed!')
+}
+
+const onUpdateSuccess = function (response) {
+  console.log('update response', response)
+  store.game = response.game
+  console.log('Update successfully!')
+  successMessage('Update successfully!')
+}
+
+const onUpdateFailure = function () {
+  console.log('Update Game failed!')
+  failureMessage('Update Game failed!')
 }
 
 module.exports = {
@@ -83,6 +95,8 @@ module.exports = {
   onSignOutSuccess,
   onSignOutFailure,
   onCreateGameSuccess,
-  onCreateGameFailure
+  onCreateGameFailure,
+  onUpdateSuccess,
+  onUpdateFailure
   // IIDD
 }

@@ -62,24 +62,61 @@ const show = function () {
 
 }
 
-const update = function (num, string) {
-  console.log(store.game.id)
-  return $.ajax({
-    method: 'PATCH',
-    url: config.apiUrl + '/games/' + store.game.id,
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: {
-      'game': {
-        'cells': {
-          'index': 0,
-          'value': 'x'
-        },
-        'over': false
-      }
+const updateGame = function (INDEX, VALUE, OVER) {
+  const dataObj = {
+    game: {
+      cell: {
+        index: INDEX,
+        value: VALUE
+      },
+      over: false
     }
-  })
+  }
+  const dataObjOver = {
+    game: {
+      over: true
+    }
+  }
+  console.log('dataObj is ', dataObj)
+  //
+  // console.log(store.game.id)
+  // return $.ajax({
+  //   method: 'PATCH',
+  //   url: `https://tic-tac-toe-wdi.herokuapp.com/games/${store.game.id}`,
+  //   headers: {
+  //     Authorization: 'Token token=' + store.user.token
+  //   },
+  //   data: {
+  //     'game': {
+  //       'cells': {
+  //         'index': 1,
+  //         'value': 'x'
+  //       },
+  //       'over': true
+  //     }
+  //   }
+  // })
+  if (OVER === '') {
+    console.log('OVER is empty string')
+    return $.ajax({
+      url: config.apiUrl + '/games/' + store.game.id,
+      method: 'PATCH',
+      headers: {
+        Authorization: 'Token token=' + store.user.token
+      },
+      data: dataObj
+    })
+  } else if (OVER === true && INDEX === '' & VALUE === '') {
+    console.log('entered')
+    return $.ajax({
+      url: config.apiUrl + `/games/${store.game.id}`,
+      method: 'PATCH',
+      headers: {
+        Authorization: 'Token token=' + store.user.token
+      },
+      data: dataObjOver
+    })
+  }
 }
 
 module.exports = {
@@ -90,5 +127,5 @@ module.exports = {
   index,
   newGame,
   show,
-  update
+  updateGame
 }
