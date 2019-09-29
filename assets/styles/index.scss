@@ -4,19 +4,25 @@ $alt-color: $cyan;
 $body-bg-color: $gray-200;
 $font-color: $light;
 
+body {
+  // border: 1px solid black;
+  margin: 0 10px;
+  background-image: url("https://i.imgur.com/LVWAjWL.jpg");
+}
+
 h1 {
   display: flex;
   justify-content: center;
 }
 
 .container {
-
+  background-color: white;
   height: 600px;
-  // border: 1px solid black;
+  border: 1px solid black;
 }
 
 .wholerow {
-  // border: 1px solid black;
+  border: 1px solid black;
 }
 
 .row {
@@ -32,6 +38,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 60px;
 }
 
 .test {
@@ -45,4 +52,128 @@ h1 {
 
 .failure {
   color: #ff0000;
+}
+
+.signUpIn {
+  background-color: white;
+  // border: 1px solid black;
+  margin: 200px auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 270px;
+  // margin: 0 auto;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  // padding: 16px 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.signInButton {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.signInButton:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.signUpButton {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.signUpButton:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.signOutChangepwd {
+  // display: flex;
+  // border: 1px solid black;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  // width: 590px;
+  // background-color: white;
+  height: 170px;
+}
+
+.showChangePasswordButton {
+  margin-left: 88%;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.showChangePasswordButton:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.changepassword {
+  margin-left: 64.77%;
+}
+
+.changePasswordButton {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.changePasswordButton:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.signOutButton {
+  margin-left: 88%;
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.signOutButton:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.gameboardSection {
+  margin-top: 30px;
+  // background-color: white;
+}
+
+.message {
+  background-color: white;
+  margin-top: 50px;
+  margin-left: 75%;
+  width: 400px;
+  text-align: center;
+  // border: 1px solid black;
+}
+
+.createNewGameButton {
+  background-color: white;
+  color: black;
+  border: 2px solid deeppink;
+}
+
+.createNewGameButton:hover {
+  background-color: deeppink;
+  color: white;
 }

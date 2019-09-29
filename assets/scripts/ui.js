@@ -18,14 +18,18 @@ const failureMessage = function (newText) {
 
 const onSignUpSuccess = function () {
   successMessage('Signed up successfully!')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 const onSignUpFailure = function () {
   failureMessage('Sign up failed')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 const onSignInSuccess = function (responseData) {
   successMessage('Signed in successfully!')
+  // setTimeout(function(){ alert("Hello"); }, 3000);
+  setTimeout(function () { $('#message').text('') }, 1000)
   console.log('responseData is', responseData)
   // save the `user` we got from the API inside of `store`
   // so we can use it later, from any file
@@ -38,18 +42,22 @@ const onSignInSuccess = function (responseData) {
 
 const onSignInFailure = function () {
   failureMessage('Sign in failed')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 const onChangePasswordSuccess = function () {
   successMessage('Changed password successfully!')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 const onChangePasswordFailure = function () {
   failureMessage('Change password failed')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 const onSignOutSuccess = function () {
-  successMessage('Signed out successfully!')
+  successMessage('Sign out successfully!')
+  setTimeout(function () { $('#message').text('') }, 1000)
   $('#gameboard-section').hide()
   $('#signOutChangepwd').hide()
   $('#signUpIn').show()
@@ -57,12 +65,14 @@ const onSignOutSuccess = function () {
 
 const onSignOutFailure = function () {
   failureMessage('Sign out failed')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 // let IIDD
 
 const onCreateGameSuccess = function (responseData) {
   successMessage('Create Game successfully!')
+  setTimeout(function () { $('#message').text('') }, 1000)
   console.log('responseData is ' + responseData)
   store.game = responseData.game
   // IIDD = store.game.id
@@ -71,6 +81,7 @@ const onCreateGameSuccess = function (responseData) {
 
 const onCreateGameFailure = function () {
   failureMessage('Create Game failed!')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 const onUpdateSuccess = function (response) {
@@ -78,11 +89,13 @@ const onUpdateSuccess = function (response) {
   store.game = response.game
   console.log('Update successfully!')
   successMessage('Update successfully!')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 const onUpdateFailure = function () {
   console.log('Update Game failed!')
   failureMessage('Update Game failed!')
+  setTimeout(function () { $('#message').text('') }, 1000)
 }
 
 module.exports = {

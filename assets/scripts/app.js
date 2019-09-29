@@ -11,11 +11,22 @@ const store = require('./store')
 // events.onUpdate()
 
 $(() => {
+  let changePasswordFormShow = false
   // --------------------------------------------------------------------------
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('submit', events.onSignOut)
+  $('#toShowChangePasswordForm').click(function () {
+    if (changePasswordFormShow === false) {
+      $('#change-password').show()
+      changePasswordFormShow = true
+    } else {
+      $('#change-password').hide()
+      changePasswordFormShow = false
+    }
+    // $('#sign-out').hide()
+  })
   // $('#new-game').on('click', events.onCreateGame)
   $('#new-game').click(function () {
     clean()
@@ -99,292 +110,47 @@ $(() => {
 
   const addClickFunction = function () {
     $('#main-message').text('GAME START ! Play1 "X" First')
-    $('#block1').on('click', function (event) {
-      if ($('#block1').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block1').text('X')
-          emptyJsBoard[0] = 'X'
-          // events.onUpdate(JSON.stringify(updateData))
-          console.log(emptyJsBoard + ' step ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block1').text('O')
-          emptyJsBoard[0] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
+    for (let blockNum = 1; blockNum < 10; blockNum++) {
+      $('#block' + blockNum).on('click', function (event) {
+        if ($('#block' + blockNum).text() === '') {
+          if (step % 2 === 0) {
+            const cellIndex = Number($(event.target).attr('data-index'))
+            console.log('cellIndex = ', cellIndex)
+            const cellValue = 'x'
+            console.log('cellValue = ', cellValue)
+            // api.updateGame(cellIndex, cellValue, '')
+            events.onUpdate(cellIndex, cellValue, '')
+            $('#block' + blockNum).text('X')
+            emptyJsBoard[blockNum - 1] = 'X'
+            // events.onUpdate(JSON.stringify(updateData))
+            console.log(emptyJsBoard + ' step ' + step)
+            $('#main-message').text(' Round: Player2')
+            checkWin()
+            step++
+          } else {
+            const cellIndex = Number($(event.target).attr('data-index'))
+            console.log('cellIndex = ', cellIndex)
+            const cellValue = 'o'
+            console.log('cellValue = ', cellValue)
+            // api.updateGame(cellIndex, cellValue, '')
+            events.onUpdate(cellIndex, cellValue, '')
+            $('#block' + blockNum).text('O')
+            emptyJsBoard[blockNum - 1] = 'O'
+            console.log(emptyJsBoard + ' ' + step)
+            $('#main-message').text('Round: Player1')
+            checkWin()
+            step++
+          }
         }
-      }
-    })
-    $('#block2').on('click', function (event) {
-      if ($('#block2').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block2').text('X')
-          emptyJsBoard[1] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block2').text('O')
-          emptyJsBoard[1] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
-    $('#block3').on('click', function (event) {
-      if ($('#block3').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block3').text('X')
-          emptyJsBoard[2] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block3').text('O')
-          emptyJsBoard[2] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
-    $('#block4').on('click', function (event) {
-      if ($('#block4').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block4').text('X')
-          emptyJsBoard[3] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block4').text('O')
-          emptyJsBoard[3] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
-    $('#block5').on('click', function (event) {
-      if ($('#block5').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block5').text('X')
-          emptyJsBoard[4] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block5').text('O')
-          emptyJsBoard[4] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
-    $('#block6').on('click', function (event) {
-      if ($('#block6').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block6').text('X')
-          emptyJsBoard[5] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block6').text('O')
-          emptyJsBoard[5] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
-    $('#block7').on('click', function (event) {
-      if ($('#block7').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block7').text('X')
-          emptyJsBoard[6] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block7').text('O')
-          emptyJsBoard[6] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
-    $('#block8').on('click', function (event) {
-      if ($('#block8').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block8').text('X')
-          emptyJsBoard[7] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block8').text('O')
-          emptyJsBoard[7] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
-    $('#block9').on('click', function (event) {
-      if ($('#block9').text() === '') {
-        if (step % 2 === 0) {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'x'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block9').text('X')
-          emptyJsBoard[8] = 'X'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player2')
-          checkWin()
-          step++
-        } else {
-          const cellIndex = Number($(event.target).attr('data-index'))
-          console.log('cellIndex = ', cellIndex)
-          const cellValue = 'o'
-          console.log('cellValue = ', cellValue)
-          // api.updateGame(cellIndex, cellValue, '')
-          events.onUpdate(cellIndex, cellValue, '')
-          $('#block9').text('O')
-          emptyJsBoard[8] = 'O'
-          console.log(emptyJsBoard + ' ' + step)
-          $('#main-message').text('Player1')
-          checkWin()
-          step++
-        }
-      }
-    })
+      })
+    }
   }
 
   const gameStart = function () {
     $('#gameboard-section').hide()
     $('#signOutChangepwd').hide()
-    addClickFunction()
+    $('#change-password').hide()
+    // addClickFunction()
   }
 
   gameStart()
