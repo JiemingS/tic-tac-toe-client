@@ -7,7 +7,7 @@ $font-color: $light;
 body {
   // border: 1px solid black;
   margin: 0 10px;
-  background-image: url("https://i.imgur.com/LVWAjWL.jpg");
+  background-image: url("https://i.imgur.com/PhqxdBQ.jpg");
   // background: url(backGround.jpg);
 }
 
@@ -23,7 +23,8 @@ h1 {
 }
 
 .wholerow {
-  border: 1px solid black;
+  background-color: white;
+  // border: 1px solid black;
 }
 
 .row {
@@ -40,6 +41,13 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: 60px;
+}
+
+.box:hover {
+  background-image: url("https://i.imgur.com/mQCVbsK.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .test {
@@ -143,7 +151,7 @@ h1 {
 }
 
 .signOutButton {
-  margin-left: 88%;
+  margin-left: 91.7%;
   background-color: white;
   color: black;
   border: 2px solid #008CBA;

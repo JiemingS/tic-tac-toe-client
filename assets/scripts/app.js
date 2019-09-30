@@ -29,7 +29,7 @@ $(() => {
   })
   // $('#new-game').on('click', events.onCreateGame)
   $('#new-game').click(function () {
-    clean()
+    cleanForNewGame()
     step = 0
     events.onCreateGame()
     addClickFunction()
@@ -51,6 +51,19 @@ $(() => {
   // JSON.stringify(updateData)
 
   const clean = function () {
+    console.log('My JsBoard Array before clean ' + emptyJsBoard)
+    // for (let i = 0; i < 9; i++) {
+    //   api.update(i, emptyJsBoard[i])
+    // }
+    for (let i = 0; i < 9; i++) {
+      $('#block' + (i + 1)).off('click')
+      emptyJsBoard[i] = ''
+      // $('#block' + (i + 1)).text('')
+    }
+    step = -1
+  }
+
+  const cleanForNewGame = function () {
     console.log('My JsBoard Array before clean ' + emptyJsBoard)
     // for (let i = 0; i < 9; i++) {
     //   api.update(i, emptyJsBoard[i])
