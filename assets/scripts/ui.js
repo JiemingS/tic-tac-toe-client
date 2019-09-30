@@ -61,6 +61,8 @@ const onSignOutSuccess = function () {
   $('#gameboard-section').hide()
   $('#signOutChangepwd').hide()
   $('#signUpIn').show()
+  $('#sign-in').trigger('reset')
+  $('#sign-up').trigger('reset')
 }
 
 const onSignOutFailure = function () {
