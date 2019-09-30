@@ -35,3 +35,13 @@ Make git commit after everytime I finish a small function.
 - Add different style choices that user can change and choose whatever they want.
 - Add background music
 - Add multiple player on a same gameboard (two player from different computer and some player can watch them)
+
+# Wireframe
+
+- [Sign-in & Sign-up](https://i.imgur.com/jhDTxyP.png)
+- [Game Board](https://i.imgur.com/gVm6LG6.png)
+
+# User stories
+
+- As a player, I want my own game account
+- As a player, I want my game data can be stored
