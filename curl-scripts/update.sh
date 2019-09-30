@@ -7,7 +7,7 @@ curl --include --request PATCH "https://tic-tac-toe-wdi.herokuapp.com/games/${ID
       "index": 1,
       "value": "x"
     },
-    "over": true
+    "over": false
   }
 }'
 echo
