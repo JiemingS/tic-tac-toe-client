@@ -161,12 +161,11 @@ $(() => {
             step++
           }
         } else {
-          console.log('can nout clikck')
           const element = document.querySelector('.box' + blockNum)
           element.classList.add('animated', 'shake')
           setTimeout(() => {
             element.classList.remove('animated', 'shake')
-          }, 2000)
+          }, 1000)
         }
       })
     }
