@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~animate.css/animate.css';
 
 $alt-color: $cyan;
 $body-bg-color: $gray-200;
@@ -38,6 +39,7 @@ h1 {
   height: 150px;
   border: 1px solid black;
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   font-size: 60px;
@@ -185,4 +187,22 @@ h1 {
 .createNewGameButton:hover {
   background-color: deeppink;
   color: white;
+}
+
+.box:nth-child(-n + 3) {
+  border-top: 0;
+}
+
+.box:nth-child(3n) {
+  border-right: 0;
+}
+
+.box:nth-child(3n + 1) {
+  border-left: 0;
+}
+
+.box7,
+.box8,
+.box9 {
+  border-bottom: 0;
 }

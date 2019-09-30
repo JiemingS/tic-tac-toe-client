@@ -70,7 +70,16 @@ const onSignOutFailure = function () {
   setTimeout(function () { $('#message').text('') }, 1000)
 }
 
-// let IIDD
+const onIndexSuccess = function (responseData) {
+  console.log('indexResponseData is ', responseData)
+  const length = responseData.games.length
+  console.log('length is ', length)
+  $('#game-history').text('Games: ' + length)
+}
+
+const onIndexFailure = function (responseData) {
+
+}
 
 const onCreateGameSuccess = function (responseData) {
   successMessage('Create Game successfully!')
@@ -112,6 +121,8 @@ module.exports = {
   onCreateGameSuccess,
   onCreateGameFailure,
   onUpdateSuccess,
-  onUpdateFailure
+  onUpdateFailure,
+  onIndexSuccess,
+  onIndexFailure
   // IIDD
 }

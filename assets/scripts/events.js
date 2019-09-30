@@ -25,6 +25,11 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
+
+  for (let i = 0; i < 9; i++) {
+    $('#block' + (i + 1)).text('')
+  }
+
   const form = event.target
   const formData = getFormFields(form)
   console.log('My formData is ' + formData)
@@ -51,6 +56,15 @@ const onSignOut = function (event) {
     .catch(ui.onSignOutFailure)
 }
 
+// -----------------------------------------------------
+const onIndex = function () {
+  console.log('Into onIndex')
+  api.index()
+    .then(ui.onIndexSuccess)
+    .catch(ui.onIndexFailure)
+}
+// -----------------------------------------------------
+
 const onCreateGame = function (event) {
   // event.preventDefault()
 
@@ -66,6 +80,7 @@ module.exports = {
   onSignUp,
   onChangePassword,
   onSignOut,
+  onIndex,
   onCreateGame,
   onUpdate
 }

@@ -29,6 +29,7 @@ $(() => {
   })
   // $('#new-game').on('click', events.onCreateGame)
   $('#new-game').click(function () {
+    // events.onIndex()
     cleanForNewGame()
     step = 0
     events.onCreateGame()
@@ -83,6 +84,7 @@ $(() => {
       if (rank === 0) {
         if (emptyJsBoard[0] !== '' && emptyJsBoard[0] === emptyJsBoard[4] && emptyJsBoard[4] === emptyJsBoard[8]) {
           events.onUpdate('', '', true)
+          events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[0] + ' Win')
           clean()
           break
@@ -91,6 +93,7 @@ $(() => {
       if (rank === 6) {
         if (emptyJsBoard[6] !== '' && emptyJsBoard[6] === emptyJsBoard[4] && emptyJsBoard[4] === emptyJsBoard[2]) {
           events.onUpdate('', '', true)
+          events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[6] + ' Win')
           clean()
           break
@@ -99,6 +102,7 @@ $(() => {
       if (rank === 1 || rank === 2 || rank === 0) {
         if (emptyJsBoard[rank] !== '' && emptyJsBoard[rank] === emptyJsBoard[rank + 3] && emptyJsBoard[rank + 3] === emptyJsBoard[rank + 6]) {
           events.onUpdate('', '', true)
+          events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[rank] + ' Win')
           clean()
           break
@@ -107,6 +111,7 @@ $(() => {
       if (rank === 0 || rank === 3 || rank === 6) {
         if (emptyJsBoard[rank] !== '' && emptyJsBoard[rank] === emptyJsBoard[rank + 1] && emptyJsBoard[rank + 1] === emptyJsBoard[rank + 2]) {
           events.onUpdate('', '', true)
+          events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[rank] + ' Win')
           clean()
           break
@@ -114,6 +119,7 @@ $(() => {
       }
       if (step >= 8) {
         events.onUpdate('', '', true)
+        events.onIndex()
         $('#main-message').text('Players Tie')
         clean()
         break
@@ -154,6 +160,13 @@ $(() => {
             checkWin()
             step++
           }
+        } else {
+          console.log('can nout clikck')
+          const element = document.querySelector('.box' + blockNum)
+          element.classList.add('animated', 'shake')
+          setTimeout(() => {
+            element.classList.remove('animated', 'shake')
+          }, 2000)
         }
       })
     }

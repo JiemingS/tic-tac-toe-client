@@ -44,7 +44,13 @@ const signOut = function () {
 }
 
 const index = function () {
-
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
 }
 
 const newGame = function () {
