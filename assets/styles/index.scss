@@ -182,6 +182,8 @@ h1 {
 }
 
 .createNewGameButton {
+  margin: 2px;
+
   font-family: 'Mansalva', cursive;
   background-color: white;
   color: black;
@@ -216,6 +218,12 @@ h1 {
 }
 
 .game-history {
+  // border: 1px solid black;
   font-family: 'Mansalva', cursive;
-  font-size: 40px;
+  margin: 10px;
+  text-align: center;
+}
+
+.button-group {
+  text-align: center;
 }
