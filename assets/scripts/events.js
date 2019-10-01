@@ -3,7 +3,7 @@
 const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-const store = require('./store')
+// const store = require('./store')
 // const app = require('./app')
 
 const onUpdate = function (Index, Value, Over) {
@@ -17,7 +17,7 @@ const onSignUp = function (event) {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
@@ -32,7 +32,7 @@ const onSignIn = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  console.log('My formData is ' + formData)
+  // console.log('My formData is ' + formData)
   api.signIn(formData)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
@@ -58,7 +58,7 @@ const onSignOut = function (event) {
 
 // -----------------------------------------------------
 const onIndex = function () {
-  console.log('Into onIndex')
+  // console.log('Into onIndex')
   api.index()
     .then(ui.onIndexSuccess)
     .catch(ui.onIndexFailure)
@@ -68,8 +68,8 @@ const onIndex = function () {
 const onCreateGame = function (event) {
   // event.preventDefault()
 
-  console.log('Into the events')
-  console.log('Store Game ' + store.game)
+  // console.log('Into the events')
+  // console.log('Store Game ' + store.game)
   api.newGame()
     .then(ui.onCreateGameSuccess)
     .catch(ui.onCreateGameFailure)

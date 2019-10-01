@@ -45,3 +45,6 @@ Make git commit after everytime I finish a small function.
 
 - As a player, I want my own game account
 - As a player, I want my game data can be stored
+- As a player, I want to play a fancy style game
+- As a player, I want X & O change everytime I click
+- As a player, I want some user message for everymove

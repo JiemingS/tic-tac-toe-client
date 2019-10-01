@@ -83,7 +83,7 @@ const updateGame = function (INDEX, VALUE, OVER) {
       over: true
     }
   }
-  console.log('dataObj is ', dataObj)
+  // console.log('dataObj is ', dataObj)
   //
   // console.log(store.game.id)
   // return $.ajax({
@@ -103,7 +103,7 @@ const updateGame = function (INDEX, VALUE, OVER) {
   //   }
   // })
   if (OVER === '') {
-    console.log('OVER is empty string')
+    // console.log('OVER is empty string')
     return $.ajax({
       url: config.apiUrl + '/games/' + store.game.id,
       method: 'PATCH',
@@ -113,7 +113,7 @@ const updateGame = function (INDEX, VALUE, OVER) {
       data: dataObj
     })
   } else if (OVER === true && INDEX === '' & VALUE === '') {
-    console.log('entered')
+    // console.log('entered')
     return $.ajax({
       url: config.apiUrl + `/games/${store.game.id}`,
       method: 'PATCH',
