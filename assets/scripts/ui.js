@@ -19,6 +19,7 @@ const failureMessage = function (newText) {
 const onSignUpSuccess = function () {
   successMessage('Signed up successfully!')
   setTimeout(function () { $('#message').text('') }, 1000)
+  $('#sign-up').trigger('reset')
 }
 
 const onSignUpFailure = function () {
@@ -50,6 +51,7 @@ const onSignInFailure = function () {
 const onChangePasswordSuccess = function () {
   successMessage('Changed password successfully!')
   setTimeout(function () { $('#message').text('') }, 1000)
+  $('#change-password').trigger('reset')
 }
 
 const onChangePasswordFailure = function () {
