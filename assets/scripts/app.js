@@ -171,6 +171,9 @@ $(() => {
   }
 
   const winWaysArray = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [2, 4, 6], [0, 4, 8]]
+  // const importantStrategyOne = [[0, 8], [2, 6]]
+  const importantStrategyTwo = [[[2, 3], [6, 1]], [[0, 5], [8, 1]], [[0, 7], [8, 3]], [[2, 7], [6, 5]]]
+  const strTwoIndex = [0, 2, 6, 8]
 
   const choiceAI = function () {
     for (let i = 0; i < 8; i++) {
@@ -197,18 +200,38 @@ $(() => {
     if (result.length !== 0) {
       return result[Math.floor(Math.random() * result.length)]
     } else {
-      const indexsS = [0, 2, 6, 8]
-      const resultS = indexsS.filter(index => emptyJsBoard[index] === '')
-      if (resultS.length !== 0) {
-        // console.log('result ', result)
-        // console.log('by random')
-        return resultS[Math.floor(Math.random() * resultS.length)]
+      if (step === 3) {
+        // strOne
+        if (emptyJsBoard[0] === 'X' && emptyJsBoard[0] === emptyJsBoard[8]) {
+          const strOne = [1, 3, 5, 7]
+          return strOne[Math.floor(Math.random() * strOne.length)]
+        }
+        if (emptyJsBoard[2] === 'X' && emptyJsBoard[2] === emptyJsBoard[6]) {
+          const strOne = [1, 3, 5, 7]
+          return strOne[Math.floor(Math.random() * strOne.length)]
+        }
+        // strTwo
+        for (let t = 0; t < 4; t++) {
+          for (let u = 0; u < 2; u++) {
+            if (emptyJsBoard[importantStrategyTwo[t][u][0]] === emptyJsBoard[importantStrategyTwo[t][u][1]] && emptyJsBoard[importantStrategyTwo[t][u][0]] === 'X') {
+              return strTwoIndex[t]
+            }
+          }
+        }
       } else {
-        const indexsN = [1, 3, 5, 7]
-        const resultN = indexsN.filter(index => emptyJsBoard[index] === '')
-        // console.log('result ', result)
-        // console.log('by random')
-        return resultN[Math.floor(Math.random() * resultN.length)]
+        const indexsS = [0, 2, 6, 8]
+        const resultS = indexsS.filter(index => emptyJsBoard[index] === '')
+        if (resultS.length !== 0) {
+          // console.log('result ', result)
+          // console.log('by random')
+          return resultS[Math.floor(Math.random() * resultS.length)]
+        } else {
+          const indexsN = [1, 3, 5, 7]
+          const resultN = indexsN.filter(index => emptyJsBoard[index] === '')
+          // console.log('result ', result)
+          // console.log('by random')
+          return resultN[Math.floor(Math.random() * resultN.length)]
+        }
       }
     }
     // console.log('result ', result)
