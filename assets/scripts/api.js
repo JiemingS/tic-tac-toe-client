@@ -53,6 +53,16 @@ const index = function () {
   })
 }
 
+const gameHistory = function () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const newGame = function () {
   return $.ajax({
     method: 'POST',
@@ -62,10 +72,6 @@ const newGame = function () {
     },
     data: {}
   })
-}
-
-const show = function () {
-
 }
 
 const updateGame = function (INDEX, VALUE, OVER) {
@@ -132,6 +138,6 @@ module.exports = {
   signOut,
   index,
   newGame,
-  show,
-  updateGame
+  updateGame,
+  gameHistory
 }

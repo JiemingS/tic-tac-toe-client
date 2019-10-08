@@ -75,6 +75,13 @@ const onCreateGame = function (event) {
     .catch(ui.onCreateGameFailure)
 }
 
+const onShowGameHistory = function () {
+  $('#all-games-id').show()
+  api.gameHistory()
+    .then(ui.onShowGameHistoryIndexSuccess)
+    .catch(ui.onShowGameHistoryIndexFailure)
+}
+
 module.exports = {
   onSignIn,
   onSignUp,
@@ -82,5 +89,6 @@ module.exports = {
   onSignOut,
   onIndex,
   onCreateGame,
-  onUpdate
+  onUpdate,
+  onShowGameHistory
 }

@@ -40,6 +40,8 @@ const onSignInSuccess = function (responseData) {
   $('#gameboard-section').show()
   $('#signOutChangepwd').show()
   $('#signUpIn').hide()
+  $('#show-game-history').show()
+  // $('#all-games-id').show()
 }
 
 const onSignInFailure = function () {
@@ -69,6 +71,10 @@ const onSignOutSuccess = function () {
   $('#signUpIn').show()
   $('#sign-in').trigger('reset')
   $('#sign-up').trigger('reset')
+  $('#sign-up').hide()
+  $('#toShowSignUpButton').show()
+  $('#show-game-history').hide()
+  $('#all-games-id').hide()
 }
 
 const onSignOutFailure = function () {
@@ -84,6 +90,24 @@ const onIndexSuccess = function (responseData) {
 }
 
 const onIndexFailure = function (responseData) {
+
+}
+
+const onShowGameHistoryIndexSuccess = function (responseData) {
+  const lengthOfData = responseData.games.length
+  // const idArray = []
+  // console.log(lengthOfData)
+  // console.log(responseData)
+  // console.log(responseData.games)
+  // idArray.push(responseData.games[lengthOfData - i].id)
+  // console.log(idArray)
+  // console.log(idArray.toString())
+  $('#all-games-id').text(responseData.games[lengthOfData - 1].id)
+  // console.log(responseData.games[lengthOfData - 1].id)
+  // console.log(responseData.games[lengthOfData - 1])
+}
+
+const onShowGameHistoryIndexFailure = function () {
 
 }
 
@@ -129,6 +153,8 @@ module.exports = {
   onUpdateSuccess,
   onUpdateFailure,
   onIndexSuccess,
-  onIndexFailure
+  onIndexFailure,
+  onShowGameHistoryIndexSuccess,
+  onShowGameHistoryIndexFailure
   // IIDD
 }

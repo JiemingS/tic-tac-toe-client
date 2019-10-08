@@ -4,6 +4,7 @@
 $alt-color: $cyan;
 $body-bg-color: $gray-200;
 $font-color: $light;
+$linkcolour: #0000FF;
 
 body {
   // border: 1px solid black;
@@ -227,3 +228,9 @@ h1 {
 .button-group {
   text-align: center;
 }
+
+// .all-games-id {
+//   background: -webkit-linear-gradient(red, yellow);
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }

@@ -12,11 +12,17 @@ const events = require('./events')
 
 $(() => {
   let changePasswordFormShow = false
+  const signUpFormShow = false
+  const emptyJsBoard = ['', '', '', '', '', '', '', '', '']
+  let step = 0
+  let someoneWin = 0
+  let doubleCheck = 0
   // --------------------------------------------------------------------------
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('submit', events.onSignOut)
+  $('#show-game-history').on('click', events.onShowGameHistory)
   $('#toShowChangePasswordForm').click(function () {
     if (changePasswordFormShow === false) {
       $('#change-password').show()
@@ -27,11 +33,22 @@ $(() => {
     }
     // $('#sign-out').hide()
   })
+  $('#toShowSignUpButton').click(function () {
+    if (signUpFormShow === false) {
+      $('#sign-up').show()
+      $('#toShowSignUpButton').hide()
+      // signUpFormShow = true
+    } else {
+      $('#sign-up').hide()
+      // signUpFormShow = false
+    }
+  })
   // $('#new-game').on('click', events.onCreateGame)
   $('#new-game').click(function () {
     // events.onIndex()
     cleanForNewGame()
     step = 0
+    doubleCheck = 0
     events.onCreateGame()
     addClickFunction()
   })
@@ -39,19 +56,19 @@ $(() => {
   $('#new-game-vs-computer').click(function () {
     cleanForNewGame()
     step = 0
+    doubleCheck = 0
     events.onCreateGame()
     addClickFunctionAI()
   })
   $('#new-game-vs-computer-2').click(function () {
     cleanForNewGame()
     step = 0
+    doubleCheck = 0
     events.onCreateGame()
     addClickFunctionAILv2()
   })
   // --------------------------------------------------------------------------
-  const emptyJsBoard = ['', '', '', '', '', '', '', '', '']
-  let step = 0
-  let someoneWin = 0
+
   // --------------------------------------------------------------------------
   // to fill the blank with X or O
   // const updateData = {
@@ -66,6 +83,7 @@ $(() => {
   // JSON.stringify(updateData)
 
   const clean = function () {
+    // doubleCheck = 0
     // console.log('My JsBoard Array before clean ' + emptyJsBoard)
     // for (let i = 0; i < 9; i++) {
     //   api.update(i, emptyJsBoard[i])
@@ -98,6 +116,7 @@ $(() => {
   // ---------------------------------------------------------------------------
 
   const checkWin = function () {
+    console.log('W', someoneWin)
     // console.log(store)
     for (let rank = 0; rank < 9; rank++) {
       // api.update(rank, emptyJsBoard[rank])
@@ -106,9 +125,11 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[0] + ' Win')
+          console.log('win 048')
           someoneWin = 1
-          clean()
-          break
+          doubleCheck = 1
+          // clean()
+          return true
         }
       }
       if (rank === 6) {
@@ -116,9 +137,11 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[6] + ' Win')
+          console.log('win 246')
           someoneWin = 1
-          clean()
-          break
+          doubleCheck = 1
+          // clean()
+          return true
         }
       }
       if (rank === 1 || rank === 2 || rank === 0) {
@@ -126,9 +149,11 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[rank] + ' Win')
+          console.log('win 0+3+6')
           someoneWin = 1
-          clean()
-          break
+          doubleCheck = 1
+          // clean()
+          return true
         }
       }
       if (rank === 0 || rank === 3 || rank === 6) {
@@ -136,18 +161,35 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[rank] + ' Win')
+          console.log('win 0+1+2')
           someoneWin = 1
-          clean()
-          break
+          // doubleCheck = 1
+          // clean()
+          return true
         }
       }
-      if (step >= 8) {
-        events.onUpdate('', '', true)
-        events.onIndex()
+      // if (step >= 8 && someoneWin === 0) {
+      //   events.onUpdate('', '', true)
+      //   events.onIndex()
+      //   if (doubleCheck === 0) {
+      //     $('#main-message').text('Players Tie')
+      //   }
+      //   // $('#main-message').text('Players Tie')
+      //   console.log(step)
+      //   // clean()
+      //   return true
+      // }
+    }
+    if (step >= 8 && someoneWin === 0) {
+      events.onUpdate('', '', true)
+      events.onIndex()
+      if (doubleCheck === 0) {
         $('#main-message').text('Players Tie')
-        clean()
-        break
       }
+      // $('#main-message').text('Players Tie')
+      console.log(step)
+      // clean()
+      return true
     }
   }
 
@@ -163,11 +205,13 @@ $(() => {
       emptyJsBoard[rand] = 'O'
       // console.log(emptyJsBoard)
       $('#block' + (rand + 1)).text('O')
+      events.onUpdate(rand, 'O', '')
       // -----------------------------------------------------------------------
       $('#main-message').text('Round: Player1')
       checkWin()
-      step++
+      // step++
     }
+    step++
   }
 
   const winWaysArray = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [2, 4, 6], [0, 4, 8]]
@@ -218,21 +262,22 @@ $(() => {
             }
           }
         }
-      } else {
-        const indexsS = [0, 2, 6, 8]
-        const resultS = indexsS.filter(index => emptyJsBoard[index] === '')
-        if (resultS.length !== 0) {
-          // console.log('result ', result)
-          // console.log('by random')
-          return resultS[Math.floor(Math.random() * resultS.length)]
-        } else {
-          const indexsN = [1, 3, 5, 7]
-          const resultN = indexsN.filter(index => emptyJsBoard[index] === '')
-          // console.log('result ', result)
-          // console.log('by random')
-          return resultN[Math.floor(Math.random() * resultN.length)]
-        }
       }
+      // else {
+      const indexsS = [0, 2, 6, 8]
+      const resultS = indexsS.filter(index => emptyJsBoard[index] === '')
+      if (resultS.length !== 0) {
+        // console.log('result ', result)
+        // console.log('by random')
+        return resultS[Math.floor(Math.random() * resultS.length)]
+      } else {
+        const indexsN = [1, 3, 5, 7]
+        const resultN = indexsN.filter(index => emptyJsBoard[index] === '')
+        // console.log('result ', result)
+        // console.log('by random')
+        return resultN[Math.floor(Math.random() * resultN.length)]
+      }
+      // }
     }
     // console.log('result ', result)
     // console.log('by random')
@@ -253,6 +298,7 @@ $(() => {
       emptyJsBoard[choice] = 'O'
       // console.log(emptyJsBoard)
       $('#block' + (choice + 1)).text('O')
+      events.onUpdate(choice, 'O', '')
       // -----------------------------------------------------------------------
       $('#main-message').text('Round: Player1')
       checkWin()
@@ -337,6 +383,7 @@ $(() => {
             $('#main-message').text('Round: Player1')
             checkWin()
             step++
+            console.log(step)
             AIMoveLv1()
           }
         } else {
@@ -400,6 +447,9 @@ $(() => {
     $('#gameboard-section').hide()
     $('#signOutChangepwd').hide()
     $('#change-password').hide()
+    $('#sign-up').hide()
+    $('#show-game-history').hide()
+    $('#all-games-id').hide()
     // addClickFunction()
   }
 
