@@ -116,7 +116,7 @@ $(() => {
   // ---------------------------------------------------------------------------
 
   const checkWin = function () {
-    console.log('W', someoneWin)
+    // console.log('W', someoneWin)
     // console.log(store)
     for (let rank = 0; rank < 9; rank++) {
       // api.update(rank, emptyJsBoard[rank])
@@ -125,7 +125,7 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[0] + ' Win')
-          console.log('win 048')
+          // console.log('win 048')
           someoneWin = 1
           doubleCheck = 1
           // clean()
@@ -137,7 +137,7 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[6] + ' Win')
-          console.log('win 246')
+          // console.log('win 246')
           someoneWin = 1
           doubleCheck = 1
           // clean()
@@ -149,7 +149,7 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[rank] + ' Win')
-          console.log('win 0+3+6')
+          // console.log('win 0+3+6')
           someoneWin = 1
           doubleCheck = 1
           // clean()
@@ -161,7 +161,7 @@ $(() => {
           events.onUpdate('', '', true)
           events.onIndex()
           $('#main-message').text('Player ' + emptyJsBoard[rank] + ' Win')
-          console.log('win 0+1+2')
+          // console.log('win 0+1+2')
           someoneWin = 1
           // doubleCheck = 1
           // clean()
@@ -187,7 +187,7 @@ $(() => {
         $('#main-message').text('Players Tie')
       }
       // $('#main-message').text('Players Tie')
-      console.log(step)
+      // console.log(step)
       // clean()
       return true
     }
@@ -383,7 +383,7 @@ $(() => {
             $('#main-message').text('Round: Player1')
             checkWin()
             step++
-            console.log(step)
+            // console.log(step)
             AIMoveLv1()
           }
         } else {
