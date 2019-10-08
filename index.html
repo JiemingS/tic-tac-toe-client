@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="animate.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <!-- <h2 id="message"></h2> -->
+
+      <section class="signUpIn" id="signUpIn" align="center">
+        <h2>Sign-in</h2>
+        <form id='sign-in'>
+          <input type="email" name="credentials[email]" placeholder='Enter email...' required>
+          <input type="password" name="credentials[password]" placeholder='Enter password' required>
+          <button class=" button signInButton">Sign In</button>
+        </form>
+        <h2>Sign-up</h2>
+        <button class="button signUpButton" id="toShowSignUpButton">Sign Up</button>
+        <form id='sign-up'>
+          <input type="email" name="credentials[email]" placeholder='Enter email...' required>
+          <input type="password" name="credentials[password]" placeholder='Enter password' required>
+          <input type="password" name="credentials[password_confirmation]" placeholder='Enter password again' required>
+          <button class=" button signUpButton">Sign Up</button>
+        </form>
+      </section>
+
+      <section  class="signOutChangepwd" id="signOutChangepwd">
+        <button class=" button showChangePasswordButton" id="toShowChangePasswordForm">Change Password</button>
+        <form class="changepassword" id='change-password'>
+          <input type="password" name="passwords[old]" placeholder='Enter old password' required>
+          <input type="password" name="passwords[new]" placeholder='Enter new password' required>
+          <button class=" button changePasswordButton" id="toShowChangePasswordForm">Change Password</button>
+        </form>
+        <br>
+        <form class="signout" id='sign-out'>
+          <button class="button signOutButton" id="toShowSignOut">Sign Out</button>
+        </form>
+      </section>
+
+      <!-- <h1>Browser Template</h1> -->
+      <section class="gameboardSection" id="gameboard-section">
+        <!-- <h1 id="main-message">Tic-Tac-Toe</h1> -->
+        <div class="col-5 container">
+          <h1 class="title" id="main-message">Tic-Tac-Toe</h1>
+          <section class="button-group">
+            <button type="submit" name="button" class="createNewGameButton" id="new-game">New Game VS Player</button>
+            <button type="submit" name="button" class="createNewGameButton" id="new-game-vs-computer">VS Computer Lv1</button>
+            <button type="submit" name="button" class="createNewGameButton" id="new-game-vs-computer-2">VS Computer Lv2</button>
+          </section>
+          <div class="col-12 wholerow">
+            <div class="row">
+              <div class="box box1" id="block1" data-index='0'></div>
+              <div class="box box2" id="block2" data-index='1'></div>
+              <div class="box box3" id="block3" data-index='2'></div>
+            </div>
+            <div class="row">
+              <div class="box box4" id="block4" data-index='3'></div>
+              <div class="box box5" id="block5" data-index='4'></div>
+              <div class="box box6" id="block6" data-index='5'></div>
+            </div>
+            <div class="row">
+              <div class="box box7" id="block7" data-index='6'></div>
+              <div class="box box8" id="block8" data-index='7'></div>
+              <div class="box box9" id="block9" data-index='8'></div>
+            </div>
+          </div>
+          <h4  class="game-history" id='game-history'>Games:</h4>
+        </div>
+      </section>
+      <!-- <h2 class="message" id="message"></h2> -->
+      <!-- <button type="submit" name="button" class="showGameHistoryButton createNewGameButton" id="show-game-history">Game History</button> -->
+      <!-- <h4 class="all-games-id" id="all-games-id"></h4> -->
+      <h2 class="message" id="message"></h2>
+    </body>
+</html>
