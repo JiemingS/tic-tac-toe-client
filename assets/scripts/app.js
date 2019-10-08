@@ -128,7 +128,7 @@ $(() => {
           // console.log('win 048')
           someoneWin = 1
           doubleCheck = 1
-          // clean()
+          clean()
           return true
         }
       }
@@ -140,7 +140,7 @@ $(() => {
           // console.log('win 246')
           someoneWin = 1
           doubleCheck = 1
-          // clean()
+          clean()
           return true
         }
       }
@@ -152,7 +152,7 @@ $(() => {
           // console.log('win 0+3+6')
           someoneWin = 1
           doubleCheck = 1
-          // clean()
+          clean()
           return true
         }
       }
@@ -164,7 +164,7 @@ $(() => {
           // console.log('win 0+1+2')
           someoneWin = 1
           // doubleCheck = 1
-          // clean()
+          clean()
           return true
         }
       }
@@ -188,7 +188,7 @@ $(() => {
       }
       // $('#main-message').text('Players Tie')
       // console.log(step)
-      // clean()
+      clean()
       return true
     }
   }
